@@ -3,3 +3,18 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  - let results = [{cakeCost:9, cookieCost:5, cooldrinkCost:1},{cakeCost:10, cookieCost:6, cooldrinkCost:2},{cakeCost:15, cookieCost:5, cooldrinkCost:3}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each items,i in results
+        div(class="col-sm-2" )  #{items.cakeCost} -  #{items.cookieCost} - #{items.cooldrinkCost}
+  br
+  div(class="container-fluid")
+    div(class="row")
+    - for(var i=0;i<results.length;i++) {
+        div(class="col-sm-2" width="215px" onClick=`buy(${i+1})`) #{results[i].cakeCost}
+    -}
+  script. 
+    function buy(index) {
+      alert(`You purchased item ${index}`);
+    }
